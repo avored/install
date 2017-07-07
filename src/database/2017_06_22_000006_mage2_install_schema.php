@@ -28,8 +28,8 @@ use Mage2\Category\Models\Category;
 use Mage2\Product\Models\Product;
 use Faker\Factory;
 use Mage2\Product\Models\ProductImage;
-use Mage2\Catalog\Models\ProductAttribute;
-use Mage2\Catalog\Models\ProductVarcharValue;
+use Mage2\Attribute\Models\ProductAttribute;
+use Mage2\Attribute\Models\ProductVarcharValue;
 use Mage2\TaxClass\Models\Country;
 
 class Mage2InstallSchema extends Migration

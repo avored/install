@@ -32,7 +32,7 @@ use Mage2\User\Models\AdminUser;
 use Mage2\Framework\System\Controllers\Controller;
 use Mage2\Install\Requests\AdminUserRequest;
 use Mage2\User\Models\Role;
-use Mage2\System\Models\Configuration;
+use Mage2\Dashboard\Models\Configuration;
 use Mage2\Framework\Module\Facades\Module;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
