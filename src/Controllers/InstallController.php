@@ -25,7 +25,6 @@
 namespace Mage2\Install\Controllers;
 
 use Exception;
-use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
 use Mage2\User\Models\AdminUser;
