@@ -24,12 +24,8 @@
  */
 namespace Mage2\Install;
 
-use Illuminate\Support\Facades\View;
 use Mage2\Framework\Support\BaseModule;
-use Illuminate\Support\Facades\File;
-use Mage2\Framework\System\Middleware\Install;
-use Mage2\Framework\System\Middleware\InstallMiddleware;
-use Symfony\Component\Yaml\Yaml;
+use Mage2\Install\Middleware\InstallMiddleware;
 use Mage2\Framework\Module\Facades\Module as ModuleFacade;
 
 class Module extends BaseModule

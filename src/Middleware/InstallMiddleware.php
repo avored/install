@@ -1,5 +1,5 @@
 <?php
-namespace Mage2\Framework\System\Middleware;
+namespace Mage2\Install\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Storage;
