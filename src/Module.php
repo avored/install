@@ -27,6 +27,8 @@ namespace Mage2\Install;
 use Illuminate\Support\Facades\View;
 use Mage2\Framework\Support\BaseModule;
 use Illuminate\Support\Facades\File;
+use Mage2\Framework\System\Middleware\Install;
+use Mage2\Framework\System\Middleware\InstallMiddleware;
 use Symfony\Component\Yaml\Yaml;
 use Mage2\Framework\Module\Facades\Module as ModuleFacade;
 
@@ -82,6 +84,7 @@ class Module extends BaseModule
         if (true === $this->getEnable()) {
             $this->registerModule();
             $this->registerDatabasePath();
+            $this->registerMiddleware();
         }
     }
 
@@ -97,6 +100,17 @@ class Module extends BaseModule
             $this->mapWebRoutes();
             $this->registerViewPath();
         }
+    }
+
+    /**
+     * Register the middleware for the mage2 auth modules.
+     *
+     * @return void
+     */
+    public function registerMiddleware()
+    {
+        $router = $this->app['router'];
+        $router->aliasMiddleware('install', InstallMiddleware::class);
     }
 
     public function registerDatabasePath()
