@@ -126,8 +126,6 @@ class Module extends BaseModule
      *
      * These routes all receive session state, CSRF protection, etc.
      *
-     * @param \Illuminate\Routing\Router $router
-     *
      * @return void
      */
     protected function mapWebRoutes()
@@ -137,7 +135,7 @@ class Module extends BaseModule
 
     protected function registerViewPath()
     {
-        $this->loadViewsFrom(__DIR__ . '/views', 'mage2install');
+        $this->loadViewsFrom(__DIR__ . '/views/admin', 'mage2-install');
     }
 
     public function getNameSpace()

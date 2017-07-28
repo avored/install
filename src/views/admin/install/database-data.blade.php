@@ -1,4 +1,4 @@
-@extends('mage2install::layouts.install')
+@extends('mage2-install::admin.layouts.install')
 
 @section('content')
     <div class="col-md-6">

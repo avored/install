@@ -62,7 +62,7 @@ class InstallController extends Controller
         }
 
 
-        return view('mage2install::install.extension')->with('result', $result);
+        return view('mage2-install::install.extension')->with('result', $result);
     }
 
     public function databaseTableGet()
@@ -94,7 +94,7 @@ class InstallController extends Controller
             }
         }
 
-        return view('mage2install::install.database-table')
+        return view('mage2-install::install.database-table')
             ->with('modules', $modules)
             ->with('communityModules', $communityModules)
             ->with('sessionData', $sessionData)
@@ -148,7 +148,7 @@ class InstallController extends Controller
 
     public function databaseDataGet()
     {
-        return view('mage2install::install.database-data');
+        return view('mage2-install::install.database-data');
     }
 
     public function databaseDataPost(Request $request)
@@ -176,7 +176,7 @@ class InstallController extends Controller
 
     public function admin()
     {
-        return view('mage2install::install.admin');
+        return view('mage2-install::install.admin');
     }
 
     public function adminPost(AdminUserRequest $request)
@@ -214,7 +214,7 @@ class InstallController extends Controller
     public function success()
     {
         Storage::disk('local')->put('installed.txt', '.installed');
-        return view('mage2install::install.success');
+        return view('mage2-install::install.success');
     }
 
 }
