@@ -9,12 +9,10 @@
                 <h4>
                     You have successfully install!
                 </h4>
-
                 <p>
                     <a href="{{ route('admin.login') }}" class="btn btn-primary">Admin Login</a>
                 </p>
             </div>
         </div>
     </div>
-
 @endsection
