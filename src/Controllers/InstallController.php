@@ -67,83 +67,17 @@ class InstallController extends Controller
 
     public function databaseTableGet()
     {
-
-        $sessionData = session()->get('install-module');
-
-        $modules = Module::systemAll();
-        $communityModules = Module::communityAll();
-
-        unset($modules['mage2-install']);
-
-        if (!Session::has('install-module')) {
-
-            foreach ($modules as $module) {
-                $sessionData [$module->getIdentifier()] = 'uninstall';
-            }
-
-            foreach ($communityModules as $module) {
-                $sessionData [$module->getIdentifier()] = 'uninstall';
-            }
-
-            session()->put('install-module', $sessionData);
-        }
-
-        foreach ($sessionData as $identifier => $status) {
-            if ($status == "uninstall") {
-                break;
-            }
-        }
-
-        return view('mage2-install::install.database-table')
-            ->with('modules', $modules)
-            ->with('communityModules', $communityModules)
-            ->with('sessionData', $sessionData)
-            ->with('identifier', $identifier);
+        return view('mage2-install::install.database-table');
     }
 
     public function databaseTablePost(Request $request)
     {
-
-        $hasUninstallModule = false;
-        $sessionData = Session::pull('install-module');
-        $identifier = $request->get('identifier');
-
-        $module = Module::get($identifier);
-
-
-        $basePath = base_path();
-
-        $moduleBasePath = $module->getPath() . DIRECTORY_SEPARATOR . "database";
-        $dbPath = str_replace($basePath, "", $moduleBasePath);
-
-        if (File::exists($moduleBasePath)) {
-
             try {
-                Artisan::call('migrate', ['--path' => $dbPath]);
+                Artisan::call('migrate');
             } catch (Exception $e) {
                 throw new Exception($e->getMessage());
             }
-        }
-
-        foreach ($sessionData as $setIdentifier => $status) {
-            if ($setIdentifier == $identifier) {
-                $sessionData[$setIdentifier] = "install";
-            }
-        }
-
-        Session::put('install-module', $sessionData);
-        foreach ($sessionData as $identifier => $status) {
-            if ($status == "uninstall") {
-                $hasUninstallModule = true;
-                break;
-            }
-        }
-
-        if (true === $hasUninstallModule) {
-            return redirect()->route('mage2.install.database.table.get');
-        }
-
-        return redirect()->route('mage2.install.database.data.get');
+        return redirect()->route('mage2.install.admin');
     }
 
     public function databaseDataGet()

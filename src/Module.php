@@ -78,7 +78,7 @@ class Module extends BaseModule
     public function boot()
     {
         if (true === $this->getEnable()) {
-            $this->registerModule();
+            //$this->registerModule();
             $this->registerDatabasePath();
             $this->registerMiddleware();
         }
@@ -111,13 +111,8 @@ class Module extends BaseModule
 
     public function registerDatabasePath()
     {
-        $dbPath = $this->getPath() . DIRECTORY_SEPARATOR . "database";
-        $this->loadMigrationsFrom($dbPath);
-    }
 
-    public function registerModule()
-    {
-        ModuleFacade::put($this->getIdentifier(), $this, $type = 'system');
+        $this->loadMigrationsFrom(__DIR__ . "/../database/migrations");
     }
 
 
@@ -130,23 +125,12 @@ class Module extends BaseModule
      */
     protected function mapWebRoutes()
     {
-        require __DIR__ . '/routes/web.php';
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
     }
 
     protected function registerViewPath()
     {
-        $this->loadViewsFrom(__DIR__ . '/views/admin', 'mage2-install');
-    }
-
-    public function getNameSpace()
-    {
-        return __NAMESPACE__;
-    }
-
-
-    public function getPath()
-    {
-        return __DIR__;
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mage2-install');
     }
 
 }

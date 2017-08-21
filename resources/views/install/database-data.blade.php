@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">Welcome to Mage2 Installation</div>
-            <div class="panel-body">
+        <div class="card card-default">
+            <div class="card-header">Welcome to Mage2 Installation</div>
+            <div class="card-body">
 
 
                 <h2 class="text-center">Database Data Setup</h2>
