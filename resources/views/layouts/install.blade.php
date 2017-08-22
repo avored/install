@@ -10,8 +10,8 @@
 
     <title>{{ config('app.name', 'Mage2 Ecommerce') }}</title>
 
-    <link href="{{ asset('vendor/mage2-admin/bootstrap4/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/mage2-admin/bootstrap4/css/open-iconic-bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/mage2-admin/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/mage2-admin/css/open-iconic-bootstrap.min.css') }}" rel="stylesheet">
 
 
     <!-- Scripts -->
@@ -23,9 +23,9 @@
     </script>
 
 
-    <script src="{{ asset('/vendor/mage2-admin/bootstrap4/js/jquery-3.2.1.slim.min.js') }}"></script>
-    <script src="{{ asset('/vendor/mage2-admin/bootstrap4/js/popper.min.js') }}"></script>
-    <script src="{{ asset('/vendor/mage2-admin/bootstrap4/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/vendor/mage2-admin/js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script src="{{ asset('/vendor/mage2-admin/js/popper.min.js') }}"></script>
+    <script src="{{ asset('/vendor/mage2-admin/js/bootstrap.min.js') }}"></script>
 
     <style>
         body {
