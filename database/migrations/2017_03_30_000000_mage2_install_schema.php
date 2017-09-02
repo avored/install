@@ -94,6 +94,7 @@ class Mage2InstallSchema extends Migration
 
         $product = Product::create([
             'name' => 'Classic TV Stand',
+            'type' => 'BASIC',
             'slug' => 'classic-tv-stand',
             'sku' => 'classic-tv-stand',
             'description' => $faker->realText(rand(3000, 6000)),
@@ -103,8 +104,7 @@ class Mage2InstallSchema extends Migration
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
             'page_title' => '',
-            'page_description' => '',
-            'has_variation' => 0,
+            'page_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -114,6 +114,7 @@ class Mage2InstallSchema extends Migration
 
         $product = Product::create([
             'name' => 'Classic Vintage Curtain',
+            'type' => 'BASIC',
             'slug' => 'classic-vintage-curtain',
             'sku' => 'classic-vintage-curtain',
             'description' => $faker->realText(rand(3000, 6000)),
@@ -123,8 +124,7 @@ class Mage2InstallSchema extends Migration
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
             'page_title' => '',
-            'page_description' => '',
-            'has_variation' => 0,
+            'page_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -135,6 +135,7 @@ class Mage2InstallSchema extends Migration
 
         $product = Product::create([
             'name' => 'Comfirtable Couch',
+            'type' => 'BASIC',
             'slug' => 'comfirtable-couch',
             'sku' => 'comfirtable-couch',
             'description' => $faker->realText(rand(3000, 6000)),
@@ -144,8 +145,7 @@ class Mage2InstallSchema extends Migration
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
             'page_title' => '',
-            'page_description' => '',
-            'has_variation' => 0,
+            'page_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -154,6 +154,7 @@ class Mage2InstallSchema extends Migration
 
 
         $product = Product::create([
+            'type' => 'BASIC',
             'name' => 'Delicate Brown Curtain',
             'slug' => 'delicate-brown-curtain',
             'sku' => 'delicate-brown-curtain',
@@ -165,7 +166,6 @@ class Mage2InstallSchema extends Migration
             'is_taxable' => 1,
             'page_title' => '',
             'page_description' => '',
-            'has_variation' => 0,
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -175,6 +175,7 @@ class Mage2InstallSchema extends Migration
 
         $title = "Medium White Couch";
         $product = Product::create([
+            'type' => 'BASIC',
             'name' => $title,
             'slug' => str_slug($title),
             'sku' => str_slug($title),
@@ -185,8 +186,7 @@ class Mage2InstallSchema extends Migration
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
             'page_title' => '',
-            'page_description' => '',
-            'has_variation' => 0,
+            'page_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -197,6 +197,7 @@ class Mage2InstallSchema extends Migration
         $title = "Comfirtable Gray Bed";
         $comfirtableGrayBedProduct = Product::create([
             'name' => $title,
+            'type' => 'BASIC',
             'slug' => str_slug($title),
             'sku' => str_slug($title),
             'description' => $faker->realText(rand(3000, 6000)),
@@ -206,8 +207,7 @@ class Mage2InstallSchema extends Migration
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
             'page_title' => '',
-            'page_description' => '',
-            'has_variation' => 0,
+            'page_description' => ''
         ]);
 
         $product->categories()->sync($bedroomCategory->id);
@@ -228,7 +228,7 @@ class Mage2InstallSchema extends Migration
             'is_taxable' => 1,
             'page_title' => '',
             'page_description' => '',
-            'has_variation' => 0,
+            'type' => 'BASIC',
         ]);
 
         $product->categories()->sync($bedroomCategory->id);
@@ -249,7 +249,7 @@ class Mage2InstallSchema extends Migration
             'is_taxable' => 1,
             'page_title' => '',
             'page_description' => '',
-            'has_variation' => 0,
+            'type' => 'BASIC',
         ]);
 
         $product->categories()->sync($bedroomCategory->id);
@@ -269,7 +269,7 @@ class Mage2InstallSchema extends Migration
             'is_taxable' => 1,
             'page_title' => '',
             'page_description' => '',
-            'has_variation' => 0,
+            'type' => 'BASIC',
         ]);
 
         $product->categories()->sync($bedroomCategory->id);
@@ -289,7 +289,7 @@ class Mage2InstallSchema extends Migration
             'is_taxable' => 1,
             'page_title' => '',
             'page_description' => '',
-            'has_variation' => 0,
+            'type' => 'BASIC',
         ]);
 
         $product->categories()->sync($kitchenCategory->id);
@@ -310,7 +310,7 @@ class Mage2InstallSchema extends Migration
             'is_taxable' => 1,
             'page_title' => '',
             'page_description' => '',
-            'has_variation' => 0,
+            'type' => 'BASIC',
         ]);
 
         $product->categories()->sync($kitchenCategory->id);
@@ -331,7 +331,7 @@ class Mage2InstallSchema extends Migration
             'is_taxable' => 1,
             'page_title' => '',
             'page_description' => '',
-            'has_variation' => 0,
+            'type' => 'BASIC',
         ]);
 
         $product->categories()->sync($kitchenCategory->id);
@@ -351,7 +351,7 @@ class Mage2InstallSchema extends Migration
             'is_taxable' => 1,
             'page_title' => '',
             'page_description' => '',
-            'has_variation' => 0,
+            'type' => 'BASIC',
         ]);
 
         $product->categories()->sync($kitchenCategory->id);

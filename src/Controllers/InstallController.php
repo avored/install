@@ -36,6 +36,7 @@ use Mage2\Framework\Module\Facades\Module;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use DB;
 
 class InstallController extends Controller
 {
@@ -73,10 +74,13 @@ class InstallController extends Controller
     public function databaseTablePost(Request $request)
     {
             try {
+                //DB::beginTransaction();
                 Artisan::call('migrate');
             } catch (Exception $e) {
+                //DB::rollback();
                 throw new Exception($e->getMessage());
             }
+        //DB::commit();
         return redirect()->route('mage2.install.admin');
     }
 
