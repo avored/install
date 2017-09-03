@@ -74,13 +74,12 @@ class InstallController extends Controller
     public function databaseTablePost(Request $request)
     {
             try {
-                //DB::beginTransaction();
-                Artisan::call('migrate');
+                Artisan::call('migrate:fresh');
             } catch (Exception $e) {
-                //DB::rollback();
+
                 throw new Exception($e->getMessage());
             }
-        //DB::commit();
+
         return redirect()->route('mage2.install.admin');
     }
 
