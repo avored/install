@@ -137,7 +137,7 @@ class InstallController extends Controller
             'configuration_value' => 'mage2-default']);
 
         Configuration::create(['configuration_key' => 'active_theme_path',
-            'configuration_value' => base_path('themes\mage2\basic')]);
+            'configuration_value' => base_path('themes\mage2\default')]);
         Configuration::create(['configuration_key' => 'mage2_catalog_no_of_product_category_page',
             'configuration_value' => 9]);
         Configuration::create(['configuration_key' => 'mage2_catalog_cart_page_display_taxamount',
