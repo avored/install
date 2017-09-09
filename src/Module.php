@@ -81,6 +81,7 @@ class Module extends BaseModule
             //$this->registerModule();
             $this->registerDatabasePath();
             $this->registerMiddleware();
+            $this->registerViewPath();
         }
     }
 
@@ -94,7 +95,7 @@ class Module extends BaseModule
         $this->registerModuleYamlFile(__DIR__ . DIRECTORY_SEPARATOR . 'module.yaml');
         if (true === $this->getEnable()) {
             $this->mapWebRoutes();
-            $this->registerViewPath();
+
         }
     }
 

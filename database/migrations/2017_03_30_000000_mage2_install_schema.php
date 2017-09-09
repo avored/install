@@ -42,8 +42,6 @@ class Mage2InstallSchema extends Migration
     {
 
         $faker = Factory::create();
-
-
         //$attribute = ProductAttribute::where('identifier', '=', 'is_featured')->first();
 
         $kitchenCategory = Category::create([
