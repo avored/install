@@ -134,7 +134,7 @@ class InstallController extends Controller
 
 
         Configuration::create(['configuration_key' => 'active_theme_identifier',
-            'configuration_value' => 'mage2-basic']);
+            'configuration_value' => 'mage2-default']);
 
         Configuration::create(['configuration_key' => 'active_theme_path',
             'configuration_value' => base_path('themes\mage2\basic')]);
