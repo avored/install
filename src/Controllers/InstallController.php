@@ -52,15 +52,6 @@ class InstallController extends Controller
         'curl'];
 
 
-    /**
-     *
-     * Using Publish Service
-     * @param \Mage2\Framework\Theme\ThemeService $service
-     *
-     */
-    public function __construct(ThemeService $service) {
-        $this->service = $service;
-    }
     public function index()
     {
         Session::forget('install-module');
@@ -131,12 +122,11 @@ class InstallController extends Controller
     public function adminPost(AdminUserRequest $request)
     {
 
-
         $theme = Theme::get('mage2-default');
         $fromPath = $theme['asset_path'];
         $toPath = public_path('vendor/'. $theme['name']);
 
-        $this->service->publishItem($fromPath, $toPath);
+        Theme::publishItem($fromPath, $toPath);
 
         $role = Role::create(['name' => 'administrator', 'description' => 'Administrator Role has all access']);
 
