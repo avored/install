@@ -33,7 +33,7 @@ use Mage2\Framework\System\Controllers\Controller;
 use Mage2\Install\Requests\AdminUserRequest;
 use Mage2\User\Models\Role;
 use Mage2\Dashboard\Models\Configuration;
-use Mage2\Framework\System\Publish\PublishService;
+use Mage2\Framework\Theme\ThemeService;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -55,10 +55,10 @@ class InstallController extends Controller
     /**
      *
      * Using Publish Service
-     * @param \Mage2\Framework\System\Publish\PublishService $service
+     * @param \Mage2\Framework\Theme\ThemeService $service
      *
      */
-    public function __construct(PublishService $service) {
+    public function __construct(ThemeService $service) {
         $this->service = $service;
     }
     public function index()
@@ -137,7 +137,7 @@ class InstallController extends Controller
         $toPath = public_path('vendor/'. $theme['name']);
 
         $this->service->publishItem($fromPath, $toPath);
-        
+
         $role = Role::create(['name' => 'administrator', 'description' => 'Administrator Role has all access']);
 
         AdminUser::create([
