@@ -27,12 +27,13 @@ namespace Mage2\Install\Controllers;
 use Exception;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
+use Mage2\Framework\Theme\Facades\Theme;
 use Mage2\User\Models\AdminUser;
 use Mage2\Framework\System\Controllers\Controller;
 use Mage2\Install\Requests\AdminUserRequest;
 use Mage2\User\Models\Role;
 use Mage2\Dashboard\Models\Configuration;
-use Mage2\Framework\Module\Facades\Module;
+use Mage2\Framework\System\Publish\PublishService;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -41,14 +42,25 @@ use DB;
 class InstallController extends Controller
 {
 
+    protected $service;
     public $extensions = [
         'openssl',
         'pdo',
         'mbstring',
         'tokenizer',
         'xml',
-        'curl',];
+        'curl'];
 
+
+    /**
+     *
+     * Using Publish Service
+     * @param \Mage2\Framework\System\Publish\PublishService $service
+     *
+     */
+    public function __construct(PublishService $service) {
+        $this->service = $service;
+    }
     public function index()
     {
         Session::forget('install-module');
@@ -118,7 +130,15 @@ class InstallController extends Controller
 
     public function adminPost(AdminUserRequest $request)
     {
-        $role = Role::create(['name' => 'administraotr', 'description' => 'Administrator Role has all access']);
+
+
+        $theme = Theme::get('mage2-default');
+        $fromPath = $theme['asset_path'];
+        $toPath = public_path('vendor/'. $theme['name']);
+
+        $this->service->publishItem($fromPath, $toPath);
+        
+        $role = Role::create(['name' => 'administrator', 'description' => 'Administrator Role has all access']);
 
         AdminUser::create([
             'first_name' => $request->get('first_name'),
@@ -132,7 +152,6 @@ class InstallController extends Controller
         $host = str_replace('http://', '', $request->getUriForPath(''));
         $host = str_replace('https://', '', $host);
 
-
         Configuration::create(['configuration_key' => 'active_theme_identifier',
             'configuration_value' => 'mage2-default']);
 
@@ -144,6 +163,7 @@ class InstallController extends Controller
             'configuration_value' => 'yes']);
         Configuration::create(['configuration_key' => 'mage2_tax_class_percentage_of_tax',
             'configuration_value' => 15]);
+
 
         return redirect()->route('mage2.install.success');
     }
