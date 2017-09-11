@@ -79,7 +79,6 @@ class Module extends BaseModule
     {
         if (true === $this->getEnable()) {
             //$this->registerModule();
-            $this->registerDatabasePath();
             $this->registerMiddleware();
             $this->registerViewPath();
         }
@@ -108,11 +107,6 @@ class Module extends BaseModule
     {
         $router = $this->app['router'];
         $router->aliasMiddleware('install', InstallMiddleware::class);
-    }
-
-    public function registerDatabasePath()
-    {
-        //$this->loadMigrationsFrom(__DIR__ . "/../database/migrations");
     }
 
 
