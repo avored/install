@@ -115,7 +115,7 @@ class InstallController extends Controller
             //$moduleBasePath = $module->getPath() . DIRECTORY_SEPARATOR . "database";
             //$dbPath = str_replace($basePath, "", $moduleBasePath);
 
-            $fromPath = "";
+            $fromPath = __DIR__ . "/assets";
             $toPath = public_path();
             //if (File::exists($moduleBasePath)) {
                 try {
