@@ -25,6 +25,7 @@
 namespace Mage2\Install\Controllers;
 
 use Exception;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
 use Mage2\Framework\Theme\Facades\Theme;
@@ -37,7 +38,8 @@ use Mage2\Framework\Theme\ThemeService;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-use DB;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use Illuminate\Database\Migrations\Migrator;
 
 class InstallController extends Controller
 {
@@ -52,8 +54,19 @@ class InstallController extends Controller
         'curl'];
 
 
+
     public function index()
     {
+
+        //$app = app();
+        //$factory = $app[EloquentFactory::class];
+
+        //$factory->load(base_path('packages/mage2/category/database/factories'));
+        //dd($factory);
+        //$factory;
+        //Artisan::call('db:seed',['--class' => 'Mage2CategorySeeder']);
+
+
         Session::forget('install-module');
 
         $result = [];
@@ -83,7 +96,7 @@ class InstallController extends Controller
                 throw new Exception($e->getMessage());
             }
 
-        return redirect()->route('mage2.install.admin');
+        return redirect()->route('mage2.install.database.data.get');
     }
 
     public function databaseDataGet()
@@ -95,20 +108,24 @@ class InstallController extends Controller
     {
         if ($request->get('install_data') == "yes") {
 
-            $identifier = $request->get('identifier');
-            $module = Module::get($identifier);
-            $basePath = base_path();
+            //$identifier = $request->get('identifier');
+            //$module = Module::get($identifier);
+            //$basePath = base_path();
 
-            $moduleBasePath = $module->getPath() . DIRECTORY_SEPARATOR . "database";
-            $dbPath = str_replace($basePath, "", $moduleBasePath);
+            //$moduleBasePath = $module->getPath() . DIRECTORY_SEPARATOR . "database";
+            //$dbPath = str_replace($basePath, "", $moduleBasePath);
 
-            if (File::exists($moduleBasePath)) {
+            $fromPath = "";
+            $toPath = public_path();
+            //if (File::exists($moduleBasePath)) {
                 try {
-                    Artisan::call('migrate', ['--path' => $dbPath]);
+                    Artisan::call('db:seed',['--class' => 'Mage2DataSeeder']);
+                    Theme::publishItem($fromPath, $toPath);
+                    //Artisan::call('migrate', ['--path' => $dbPath]);
                 } catch (Exception $e) {
                     throw new Exception($e->getMessage());
                 }
-            }
+            //}
         }
 
         return redirect()->route('mage2.install.admin');

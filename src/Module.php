@@ -112,8 +112,7 @@ class Module extends BaseModule
 
     public function registerDatabasePath()
     {
-
-        $this->loadMigrationsFrom(__DIR__ . "/../database/migrations");
+        //$this->loadMigrationsFrom(__DIR__ . "/../database/migrations");
     }
 
 
