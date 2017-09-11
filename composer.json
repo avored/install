@@ -17,7 +17,7 @@
     "autoload": {
         "classmap": [
             "database/factories",
-            'database/seeds'
+            "database/seeds"
         ],
         "psr-4": {
             "Mage2\\Install\\": "src/"
