@@ -98,7 +98,7 @@ class InstallController extends Controller
     public function databaseTablePost(Request $request)
     {
         try {
-            Artisan::call('migrate');
+            Artisan::call('migrate:fresh');
         } catch (Exception $e) {
 
             throw new Exception($e->getMessage());
@@ -120,6 +120,7 @@ class InstallController extends Controller
             $toPath = public_path();
 
             try {
+
                 Artisan::call('db:seed', ['--class' => 'Mage2DataSeeder']);
                 Theme::publishItem($fromPath, $toPath);
 
@@ -159,6 +160,7 @@ class InstallController extends Controller
                 'is_super_admin' => 1,
                 'role_id' => $role->id,
             ]);
+
 
             Artisan::call('passport:install');
 

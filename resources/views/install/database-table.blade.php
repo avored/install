@@ -12,7 +12,7 @@
 
                 <p>Click Continue to install Database</p>
 
-                <div class="col s12">
+                <div class="form-group">
                     <button type="button" class="btn btn-primary install-new-button">Install Database</button>
                 </div>
                 {!! Form::close() !!}

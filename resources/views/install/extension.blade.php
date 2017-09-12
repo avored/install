@@ -13,67 +13,85 @@
                         <h4>Extension Requirement</h4>
 
                         <div class="extension-list">
-                            <div>
+                            <div class="php-extension">
                                 <span>OpenSSL PHP Extension</span>
-                        <span class="pull-right">
-                                @if($result['openssl'] == true)
-                                <i class="glyphicon glyphicon-ok glyphicon "></i>
-                            @else
-                                <i class="glyphicon glyphicon-remove glyphicon "></i>
-                            @endif
-                            </span>
+                                    <span class="float-right">
+                                        @if($result['openssl'] == true)
+                                            <i class="oi oi-check"></i>
+                                        @else
+                                            <i class="oi oi-ban"></i>
+                                        @endif
+                                    </span>
                             </div>
-                            <div>
+
+                            <div class="php-extension">
+                                <span>GD PHP Extension</span>
+                                    <span class="float-right">
+                                        @if($result['gd'] == true)
+                                            <i class="oi oi-check"></i>
+                                        @else
+                                            <i class="oi oi-ban"></i>
+                                        @endif
+                                    </span>
+                            </div>
+
+
+                            <div class="php-extension">
                                 <span>Curl PHP Extension</span>
-                        <span class="pull-right">
-                                @if($result['curl'] == true)
-                                <i class="glyphicon glyphicon-ok glyphicon "></i>
-                            @else
-                                <i class="glyphicon glyphicon-remove glyphicon "></i>
-                            @endif
-                            </span>
+                                <span class="float-right">
+                                    @if($result['curl'] == true)
+                                        <i class="oi oi-check"></i>
+                                    @else
+                                        <i class="oi oi-ban"></i>
+                                    @endif
+                                </span>
                             </div>
-                            <div>
+
+                            <div class="php-extension">
                                 <span>XML PHP Extension</span>
-                        <span class="pull-right">
-                                @if($result['xml'] == true)
-                                <i class="glyphicon glyphicon-ok glyphicon "></i>
-                            @else
-                                <i class="glyphicon glyphicon-remove glyphicon "></i>
-                            @endif
-                            </span>
-                            </div>
-                            <div>
-                                <span>PDO PHP Extension</span><span class="pull-right">
-                                @if($result['pdo'] == true)
-                                        <i class="glyphicon glyphicon-ok glyphicon "></i>
+                                <span class="float-right">
+                                    @if($result['xml'] == true)
+                                        <i class="oi oi-check"></i>
                                     @else
-                                        <i class="glyphicon glyphicon-remove glyphicon "></i>
+                                        <i class="oi oi-ban"></i>
                                     @endif
-                            </span>
+                                </span>
                             </div>
-                            <div>
-                                <span>Mbstring PHP Extension</span><span class="pull-right">
-                                @if($result['mbstring'] == true)
-                                        <i class="glyphicon glyphicon-ok glyphicon "></i>
+
+                            <div class="php-extension">
+                                <span>PDO PHP Extension</span>
+                                <span class="float-right">
+                                    @if($result['pdo'] == true)
+                                        <i class="oi oi-check"></i>
                                     @else
-                                        <i class="glyphicon glyphicon-remove glyphicon "></i>
+                                        <i class="oi oi-ban"></i>
                                     @endif
-                            </span>
+                                </span>
                             </div>
-                            <div>
-                                <span>Tokenizer PHP Extension</span><span class="pull-right">
-                                @if($result['tokenizer'] == true)
-                                        <i class="glyphicon glyphicon-ok glyphicon "></i>
+                            <div class="php-extension">
+                                <span>Mbstring PHP Extension</span>
+                                <span class="float-right">
+                                    @if($result['mbstring'] == true)
+                                        <i class="oi oi-check"></i>
                                     @else
-                                        <i class="glyphicon glyphicon-remove glyphicon "></i>
+                                        <i class="oi oi-ban"></i>
                                     @endif
-                            </span>
+                                </span>
+                            </div>
+                            <div class="php-extension">
+                                <span>Tokenizer PHP Extension</span>
+                                <span class="float-right">
+                                    @if($result['tokenizer'] == true)
+                                        <i class="oi oi-check"></i>
+                                    @else
+                                        <i class="oi oi-ban"></i>
+                                    @endif
+                                </span>
                             </div>
                         </div>
-                        <div class="">
-                            <button data-url="{{ route('mage2.install.database.table.get') }}"
 
+                        <div class="form-group">
+                            <button data-url="{{ route('mage2.install.database.table.get') }}"
                                     class="btn btn-primary continue-button">Continue
                             </button>
                         </div>

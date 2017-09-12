@@ -15,7 +15,7 @@
                 {!! Form::select('install_data','Install Dummy Data',['no' => "No",'yes' => 'Yes']) !!}
                 <p>Click Continue to install Database</p>
 
-                <div class="col s12">
+                <div class="form-group">
                     <button type="submit" class="btn btn-primary">Continue</button>
                 </div>
                 {!! Form::close() !!}

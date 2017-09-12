@@ -48,7 +48,6 @@
 
         .installation-card {
             width: 60%;
-
             text-align: center;
         }
 
