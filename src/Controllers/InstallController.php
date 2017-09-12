@@ -25,7 +25,7 @@
 namespace Mage2\Install\Controllers;
 
 use Exception;
-use Illuminate\Support\Facades\App;
+
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
 use Mage2\Framework\Theme\Facades\Theme;
@@ -37,36 +37,45 @@ use Mage2\Dashboard\Models\Configuration;
 use Mage2\Framework\Theme\ThemeService;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
-use Illuminate\Database\Migrations\Migrator;
+use Laravel\Passport\ClientRepository;
 
 class InstallController extends Controller
 {
 
     protected $service;
+
+
+    /**
+     * Laravel Passport Client Repository
+     *
+     * @var \Laravel\Passport\ClientRepository
+     */
+    protected $clientRepository;
+
+
     public $extensions = [
         'openssl',
         'pdo',
         'mbstring',
         'tokenizer',
+        'gd',
         'xml',
         'curl'];
 
 
+    public function __construct(ClientRepository $clientRepository)
+    {
+        $this->clientRepository = $clientRepository;
+    }
 
+    /**
+     * Display all needed PHP Extension for the Mage2 E commerce App
+     *
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-
-        //$app = app();
-        //$factory = $app[EloquentFactory::class];
-
-        //$factory->load(base_path('packages/mage2/category/database/factories'));
-        //dd($factory);
-        //$factory;
-        //Artisan::call('db:seed',['--class' => 'Mage2CategorySeeder']);
-
-
         Session::forget('install-module');
 
         $result = [];
@@ -78,7 +87,6 @@ class InstallController extends Controller
             }
         }
 
-
         return view('mage2-install::install.extension')->with('result', $result);
     }
 
@@ -89,12 +97,12 @@ class InstallController extends Controller
 
     public function databaseTablePost(Request $request)
     {
-            try {
-                Artisan::call('migrate:fresh');
-            } catch (Exception $e) {
+        try {
+            Artisan::call('migrate:fresh');
+        } catch (Exception $e) {
 
-                throw new Exception($e->getMessage());
-            }
+            throw new Exception($e->getMessage());
+        }
 
         return redirect()->route('mage2.install.database.data.get');
     }
@@ -108,24 +116,17 @@ class InstallController extends Controller
     {
         if ($request->get('install_data') == "yes") {
 
-            //$identifier = $request->get('identifier');
-            //$module = Module::get($identifier);
-            //$basePath = base_path();
-
-            //$moduleBasePath = $module->getPath() . DIRECTORY_SEPARATOR . "database";
-            //$dbPath = str_replace($basePath, "", $moduleBasePath);
-
             $fromPath = __DIR__ . "/../../assets";
             $toPath = public_path();
-            //if (File::exists($moduleBasePath)) {
-                try {
-                    Artisan::call('db:seed',['--class' => 'Mage2DataSeeder']);
-                    Theme::publishItem($fromPath, $toPath);
-                    //Artisan::call('migrate', ['--path' => $dbPath]);
-                } catch (Exception $e) {
-                    throw new Exception($e->getMessage());
-                }
-            //}
+
+            try {
+                Artisan::call('db:seed', ['--class' => 'Mage2DataSeeder']);
+                Theme::publishItem($fromPath, $toPath);
+
+            } catch (Exception $e) {
+                throw new Exception($e->getMessage());
+            }
+
         }
 
         return redirect()->route('mage2.install.admin');
@@ -141,35 +142,53 @@ class InstallController extends Controller
 
         $theme = Theme::get('mage2-default');
         $fromPath = $theme['asset_path'];
-        $toPath = public_path('vendor/'. $theme['name']);
+        $toPath = public_path('vendor/' . $theme['name']);
 
         Theme::publishItem($fromPath, $toPath);
 
-        $role = Role::create(['name' => 'administrator', 'description' => 'Administrator Role has all access']);
+        try {
 
-        AdminUser::create([
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
-            'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password')),
-            'is_super_admin' => 1,
-            'role_id' => $role->id,
-        ]);
 
-        $host = str_replace('http://', '', $request->getUriForPath(''));
-        $host = str_replace('https://', '', $host);
+            $role = Role::create(['name' => 'administrator', 'description' => 'Administrator Role has all access']);
 
-        Configuration::create(['configuration_key' => 'active_theme_identifier',
-            'configuration_value' => 'mage2-default']);
+            $adminUser = AdminUser::create([
+                'first_name' => $request->get('first_name'),
+                'last_name' => $request->get('last_name'),
+                'email' => $request->get('email'),
+                'password' => bcrypt($request->get('password')),
+                'is_super_admin' => 1,
+                'role_id' => $role->id,
+            ]);
 
-        Configuration::create(['configuration_key' => 'active_theme_path',
-            'configuration_value' => base_path('themes\mage2\default')]);
-        Configuration::create(['configuration_key' => 'mage2_catalog_no_of_product_category_page',
-            'configuration_value' => 9]);
-        Configuration::create(['configuration_key' => 'mage2_catalog_cart_page_display_taxamount',
-            'configuration_value' => 'yes']);
-        Configuration::create(['configuration_key' => 'mage2_tax_class_percentage_of_tax',
-            'configuration_value' => 15]);
+            Artisan::call('passport:install');
+
+            $this->clientRepository->createPasswordGrantClient($adminUser->id, $adminUser->full_name, $request->getUriForPath('/'));
+
+            Configuration::create([
+                'configuration_key' => 'active_theme_identifier',
+                'configuration_value' => 'mage2-default'
+            ]);
+            Configuration::create([
+                'configuration_key' => 'active_theme_path',
+                'configuration_value' => base_path('themes\mage2\default')
+            ]);
+            Configuration::create([
+                'configuration_key' => 'mage2_catalog_no_of_product_category_page',
+                'configuration_value' => 9
+            ]);
+            Configuration::create(
+                ['configuration_key' => 'mage2_catalog_cart_page_display_taxamount',
+                    'configuration_value' => 'yes'
+                ]);
+            Configuration::create([
+                'configuration_key' => 'mage2_tax_class_percentage_of_tax',
+                'configuration_value' => 15
+            ]);
+
+
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
 
 
         return redirect()->route('mage2.install.success');
