@@ -21,12 +21,5 @@
         "psr-4": {
             "Mage2\\Install\\": "src/"
         }
-    },
-    "extra": {
-        "laravel" : {
-            "providers": [
-                "Mage2\\Install\\Module"
-            ]
-        }
     }
 }
