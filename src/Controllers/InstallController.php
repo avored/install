@@ -98,7 +98,7 @@ class InstallController extends Controller
     public function databaseTablePost(Request $request)
     {
         try {
-            Artisan::call('migrate:fresh');
+            Artisan::call('migrate');
         } catch (Exception $e) {
 
             throw new Exception($e->getMessage());
