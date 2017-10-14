@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Mage2\Framework\Database\Models\Category;
-use Mage2\Framework\Database\Models\Product;
+use Mage2\Ecommerce\Models\Database\Category;
+use Mage2\Ecommerce\Models\Database\Product;
 use Faker\Factory;
-use Mage2\Framework\Database\Models\ProductImage;
-use Mage2\TaxClass\Models\Country;
+use Mage2\Ecommerce\Models\Database\ProductImage;
+use Mage2\Ecommerce\Models\Database\Country;
 
 
 class Mage2DataSeeder extends Seeder

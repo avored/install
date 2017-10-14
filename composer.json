@@ -12,7 +12,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=7.0.0"
+        "php": ">=7.0.0",
+        "symfony/yaml": "^3.3"
     },
     "autoload": {
         "classmap": [
