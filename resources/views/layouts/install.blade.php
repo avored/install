@@ -23,7 +23,7 @@
     </script>
 
 
-    <script src="{{ asset('/vendor/mage2-admin/js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script src="{{ asset('/vendor/mage2-admin/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('/vendor/mage2-admin/js/popper.min.js') }}"></script>
     <script src="{{ asset('/vendor/mage2-admin/js/bootstrap.min.js') }}"></script>
 
