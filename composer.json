@@ -15,12 +15,14 @@
         "php": ">=7.0.0",
         "symfony/yaml": "^3.3"
     },
-    "autoload": {
-        "classmap": [
-            "database/seeds"
-        ],
-        "psr-4": {
-            "Mage2\\Install\\": "src/"
-        }
+  "autoload": {
+    "classmap": [
+      "database/seeds",
+      "database/factories"
+    ],
+    "psr-4": {
+      "Mage2\\Install\\": "src"
+
     }
+  }
 }
