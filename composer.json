@@ -1,5 +1,6 @@
 {
     "name": "mage2/install",
+    "type": "mage2-module",
     "description": "Mage2 Laravel 5 E commerce Install Module",
     "keywords": ["framework", "install" ,"cart","laravel","e commerce","laravel5","shop","shopping-cart","e-commerce","shopping cart","e commerce"],
     "license": "GPL-3.0",
@@ -10,7 +11,6 @@
         }
     ],
     "minimum-stability": "dev",
-     "type": "project",
     "require": {
         "php": ">=7.0.0"
     },

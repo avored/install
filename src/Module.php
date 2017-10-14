@@ -24,44 +24,12 @@
  */
 namespace Mage2\Install;
 
-use Mage2\Framework\Support\BaseModule;
+use Illuminate\Support\ServiceProvider;
 use Mage2\Install\Middleware\InstallMiddleware;
-use Mage2\Framework\Module\Facades\Module as ModuleFacade;
 
-class Module extends BaseModule
+class Module extends ServiceProvider
 {
 
-
-    /**
-     *
-     * Module Name Variable
-     * @var string $name
-     *
-     */
-    protected $name = NULL;
-
-    /**
-     *
-     * Module identifier  Variable
-     * @var string $identifier
-     *
-     */
-    protected $identifier = NULL;
-    /**
-     *
-     * Module Description Variable
-     * @var string $description
-     *
-     */
-    protected $description = NULL;
-
-    /**
-     *
-     * Module Enable Variable
-     * @var bool $enable
-     *
-     */
-    protected $enable = NULL;
 
 
     /**
@@ -77,11 +45,9 @@ class Module extends BaseModule
      */
     public function boot()
     {
-        if (true === $this->getEnable()) {
-            //$this->registerModule();
             $this->registerMiddleware();
             $this->registerViewPath();
-        }
+
     }
 
     /**
@@ -91,11 +57,7 @@ class Module extends BaseModule
      */
     public function register()
     {
-        $this->registerModuleYamlFile(__DIR__ . DIRECTORY_SEPARATOR . 'module.yaml');
-        if (true === $this->getEnable()) {
             $this->mapWebRoutes();
-
-        }
     }
 
     /**

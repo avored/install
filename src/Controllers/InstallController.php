@@ -25,16 +25,14 @@
 namespace Mage2\Install\Controllers;
 
 use Exception;
-
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
-use Mage2\Framework\Theme\Facades\Theme;
-use Mage2\User\Models\AdminUser;
-use Mage2\Framework\System\Controllers\Controller;
+use Mage2\Ecommerce\Theme\Facade as Theme;
+use Mage2\Ecommerce\Models\Database\AdminUser;
+use Illuminate\Routing\Controller;
 use Mage2\Install\Requests\AdminUserRequest;
-use Mage2\User\Models\Role;
-use Mage2\Dashboard\Models\Configuration;
-use Mage2\Framework\Theme\ThemeService;
+use Mage2\Ecommerce\Models\Database\Role;
+use Mage2\Ecommerce\Models\Database\Configuration;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Passport\ClientRepository;
