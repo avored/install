@@ -9,16 +9,28 @@
 
                 <h2 class="text-center">Database Data Setup</h2>
 
-                {!! Form::open(['method' => 'post','action' => route('mage2.install.database.data.post')]) !!}
+                <form method="post" action="{{ route('mage2.install.database.data.post') }}">
+                    {{ csrf_field() }}
 
-                {!! Form::hidden('identifier','mage2-install') !!}
-                {!! Form::select('install_data','Install Dummy Data',['no' => "No",'yes' => 'Yes']) !!}
+                    <input type="hidden" name="identifier" value="mage2-install" />
+
+                    <div class="form-group">
+                        <label for="install_data">Install Dummy Data</label>
+
+                        <select name="install_data" id="install_data" class="form-control">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+
+                        </select>
+                    </div>
+
+
                 <p>Click Continue to install Database</p>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Continue</button>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>

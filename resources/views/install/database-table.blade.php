@@ -8,14 +8,17 @@
 
                 <h2 class="text-center">Database Table Setup</h2>
 
-                {!! Form::open(['id' => 'install-module-form','method' => 'post','action' => route('mage2.install.database.table.post')]) !!}
+                <form id="install-module-form" method="post" action="{{ route('mage2.install.database.table.post') }}">
+
+                    {{ csrf_field() }}
 
                 <p>Click Continue to install Database</p>
 
                 <div class="form-group">
                     <button type="button" class="btn btn-primary install-new-button">Install Database</button>
                 </div>
-                {!! Form::close() !!}
+
+                </form>
 
             </div>
         </div>

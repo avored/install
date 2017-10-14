@@ -11,19 +11,40 @@
 
                 <h4 class="text-center">Create Admin Account</h4>
 
-                {!! Form::open(['method'=> 'post','id' => 'create-admin-user-form','action' => route('mage2.install.admin.post')]) !!}
-                {!! Form::text('first_name','First Name') !!}
-                {!! Form::text('last_name','Last Name') !!}
-                {!! Form::text('email','Email') !!}
+                <form action="{{ route('mage2.install.admin.post') }}" method="post" id="create-admin-user-form">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" class="form-control" id="first_name"  />
+                    </div>
 
-                {!! Form::password('password','Password') !!}
-                {!! Form::password('password_confirmation','Confirm Password') !!}
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" class="form-control" id="last_name"  />
+                    </div>
 
-                {!! Form::select('language','Language',['en' => 'English']) !!}
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control" id="email"  />
+                    </div>
 
-                {!! Form::button('Continue',['class' => 'btn btn-primary create-user-button']) !!}
 
-                {!! Form::close() !!}
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" id="password"  />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password_confirmation">Confirm Password</label>
+                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation"  />
+                    </div>
+
+                    <input type="hidden" name="language" value="en">
+                    <div class="form-group">
+                        <button class="btn btn-primary create-user-button" type="button">Continue</button>
+                    </div>
+
+                </form>
 
             </div>
         </div>
