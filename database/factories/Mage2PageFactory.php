@@ -11,17 +11,7 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-$factory->define(\Mage2\Ecommerce\Models\Database\Category::class, function (Faker $faker) {
 
-    $name = $faker->name;
-    $slug = str_slug($name);
-
-    return [
-        'parent_id' => 0,
-        'name' => $name,
-        'slug' => $slug,
-    ];
-});
 
 $factory->define(\Mage2\Ecommerce\Models\Database\Page::class, function (Faker $faker) {
 

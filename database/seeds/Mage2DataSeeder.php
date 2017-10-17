@@ -339,11 +339,15 @@ class Mage2DataSeeder extends Seeder
         }
 
 
-        $homePage = factory(\Mage2\Ecommerce\Models\Database\Page::class)->create(['name' => 'Home Page', 'slug' => 'home-page']);
+        $homePage = factory(\Mage2\Ecommerce\Models\Database\Page::class)->create(['name' => 'Home Page',
+                                                                                    'slug' => 'home-page',
+                                                                                    'meta_title' => 'Home Page - Mage2 E commerce']);
         \Mage2\Ecommerce\Models\Database\Configuration::create(['configuration_key' => 'general_home_page',
                                                                 'configuration_value' => $homePage->id]);
 
-        $termPage = factory(\Mage2\Ecommerce\Models\Database\Page::class)->create(['name' => 'Term & Condition', 'slug' => 'term-condition']);
+        $termPage = factory(\Mage2\Ecommerce\Models\Database\Page::class)->create(['name' => 'Term & Condition',
+                                                                                    'slug' => 'term-condition',
+                                                                                    'meta_title' => 'Term & Condition - Mage2 E commerce']);
         \Mage2\Ecommerce\Models\Database\Configuration::create(['configuration_key' => 'general_term_condition_page',
                                                                 'configuration_value' => $termPage->id]);
 
