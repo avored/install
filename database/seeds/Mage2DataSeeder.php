@@ -331,13 +331,6 @@ class Mage2DataSeeder extends Seeder
         ProductImage::create(['path' => '/uploads/catalog/images/0/y/4/tsf02crsa.jpg', 'product_id' => $product->id, 'is_main_image' => 1]);
         $product->prices()->create(['price' => rand(2, 10) . "0." . rand(1, 9) . "0"]);
 
-        $path = public_path() . '/countries.json';
-
-        $json = json_decode(file_get_contents($path), true);
-        foreach ($json as $code => $name) {
-            Country::create(['code' => $code, 'name' => $name]);
-        }
-
 
         $homePage = factory(\Mage2\Ecommerce\Models\Database\Page::class)->create(['name' => 'Home Page',
                                                                                     'slug' => 'home-page',
