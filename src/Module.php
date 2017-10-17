@@ -26,10 +26,10 @@ namespace Mage2\Install;
 
 use Illuminate\Support\ServiceProvider;
 use Mage2\Install\Middleware\InstallMiddleware;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class Module extends ServiceProvider
 {
-
 
 
     /**
@@ -45,8 +45,11 @@ class Module extends ServiceProvider
      */
     public function boot()
     {
-            $this->registerMiddleware();
-            $this->registerViewPath();
+        $this->registerMiddleware();
+        $this->registerViewPath();
+        $dbFactory = $this->app[EloquentFactory::class];
+        $path = __DIR__ . "/../database/factories";
+        $dbFactory->load($path);
 
     }
 
@@ -57,7 +60,7 @@ class Module extends ServiceProvider
      */
     public function register()
     {
-            $this->mapWebRoutes();
+        $this->mapWebRoutes();
     }
 
     /**

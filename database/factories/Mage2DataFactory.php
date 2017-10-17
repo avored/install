@@ -22,3 +22,20 @@ $factory->define(\Mage2\Ecommerce\Models\Database\Category::class, function (Fak
         'slug' => $slug,
     ];
 });
+
+$factory->define(\Mage2\Ecommerce\Models\Database\Page::class, function (Faker $faker) {
+
+    $name = $faker->name;
+    $slug = str_slug($name);
+    $content = $faker->realText(5000);
+    $metaTitle = $faker->title;
+    $metaDescription = $faker->title;
+
+    return [
+        'name' => $name,
+        'slug' => $slug,
+        'content' => $content,
+        'meta_title' => $metaTitle,
+        'meta_description' => $metaDescription
+    ];
+});

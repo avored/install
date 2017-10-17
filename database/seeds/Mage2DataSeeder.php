@@ -6,6 +6,7 @@ use Mage2\Ecommerce\Models\Database\Product;
 use Faker\Factory;
 use Mage2\Ecommerce\Models\Database\ProductImage;
 use Mage2\Ecommerce\Models\Database\Country;
+use Mage2\Ecommerce\Models\Database\Page;
 
 
 class Mage2DataSeeder extends Seeder
@@ -52,15 +53,15 @@ class Mage2DataSeeder extends Seeder
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
-        ProductImage::create(['path' => '/uploads/catalog/images/f/h/2/flower-pot.jpg', 'product_id' => $product->id,'is_main_image' => 1]);
+        ProductImage::create(['path' => '/uploads/catalog/images/f/h/2/flower-pot.jpg', 'product_id' => $product->id, 'is_main_image' => 1]);
         $product->prices()->create(['price' => rand(2, 10) . "0." . rand(1, 9) . "0"]);
 
         /**
-        ProductVarcharValue::create([
-        'product_id' => $product->id,
-        'product_attribute_id' => $attribute->id,
-        'value' => $attribute->attributeDropdownOptions->pluck('id')->random()
-        ]);*/
+         * ProductVarcharValue::create([
+         * 'product_id' => $product->id,
+         * 'product_attribute_id' => $attribute->id,
+         * 'value' => $attribute->attributeDropdownOptions->pluck('id')->random()
+         * ]);*/
 
 
         //$flowerPotProduct->cate
@@ -81,7 +82,7 @@ class Mage2DataSeeder extends Seeder
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
-        ProductImage::create(['path' => '/uploads/catalog/images/d/0/c/classic-tv-stand.jpg', 'product_id' => $product->id,'is_main_image' => 1]);
+        ProductImage::create(['path' => '/uploads/catalog/images/d/0/c/classic-tv-stand.jpg', 'product_id' => $product->id, 'is_main_image' => 1]);
         $product->prices()->create(['price' => rand(2, 10) . "0." . rand(1, 9) . "0"]);
 
 
@@ -101,9 +102,8 @@ class Mage2DataSeeder extends Seeder
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
-        ProductImage::create(['path' => '/uploads/catalog/images/y/f/r/textiles-2.jpg', 'product_id' => $product->id,'is_main_image' => 1]);
+        ProductImage::create(['path' => '/uploads/catalog/images/y/f/r/textiles-2.jpg', 'product_id' => $product->id, 'is_main_image' => 1]);
         $product->prices()->create(['price' => rand(2, 10) . "0." . rand(1, 9) . "0"]);
-
 
 
         $product = Product::create([
@@ -142,7 +142,7 @@ class Mage2DataSeeder extends Seeder
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
-        ProductImage::create(['path' => '/uploads/catalog/images/q/o/m/comfortable-leather-chair-published-under-the-most-comfortable-couch-group.jpg', 'product_id' => $product->id,'is_main_image' => 1]);
+        ProductImage::create(['path' => '/uploads/catalog/images/q/o/m/comfortable-leather-chair-published-under-the-most-comfortable-couch-group.jpg', 'product_id' => $product->id, 'is_main_image' => 1]);
         $product->prices()->create(['price' => rand(2, 10) . "0." . rand(1, 9) . "0"]);
 
 
@@ -337,5 +337,15 @@ class Mage2DataSeeder extends Seeder
         foreach ($json as $code => $name) {
             Country::create(['code' => $code, 'name' => $name]);
         }
+
+
+        $homePage = factory(\Mage2\Ecommerce\Models\Database\Page::class)->create(['name' => 'Home Page', 'slug' => 'home-page']);
+        \Mage2\Ecommerce\Models\Database\Configuration::create(['configuration_key' => 'general_home_page',
+                                                                'configuration_value' => $homePage->id]);
+
+        $termPage = factory(\Mage2\Ecommerce\Models\Database\Page::class)->create(['name' => 'Term & Condition', 'slug' => 'term-condition']);
+        \Mage2\Ecommerce\Models\Database\Configuration::create(['configuration_key' => 'general_term_condition_page',
+                                                                'configuration_value' => $termPage->id]);
+
     }
 }
