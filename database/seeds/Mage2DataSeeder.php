@@ -22,17 +22,17 @@ class Mage2DataSeeder extends Seeder
         //$attribute = ProductAttribute::where('identifier', '=', 'is_featured')->first();
 
         $kitchenCategory = Category::create([
-            'parent_id' => 0,
+            'parent_id' => null,
             'name' => 'Kitchen',
             'slug' => 'kitchen'
         ]);
         $bedroomCategory = Category::create([
-            'parent_id' => 0,
+            'parent_id' => null,
             'name' => 'Bedroom',
             'slug' => 'bedroom'
         ]);
         $livingRoomCategory = Category::create([
-            'parent_id' => 0,
+            'parent_id' =>  null,
             'name' => 'Living Room',
             'slug' => 'living-room'
         ]);
