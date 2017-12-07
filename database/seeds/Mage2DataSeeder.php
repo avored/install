@@ -332,10 +332,10 @@ class Mage2DataSeeder extends Seeder
         $product->prices()->create(['price' => rand(2, 10) . "0." . rand(1, 9) . "0"]);
 
 
-        $homePageContent = html_entity_decode();
+        $homePageContent = html_entity_decode('<p>&nbsp;</p><p>&nbsp;</p><p><strong>HOME PAGE FOR MAGE2 E COMMERCE LARAVEL OPEN SOURCE SHOPPING CART</strong></p><p>&nbsp;</p><p><strong>Please star us on&nbsp;<a href="https://github.com/mage2/laravel-ecommerce">https://github.com/mage2/laravel-ecommerce</a></strong></p><p><strong>Like us on Facebook :&nbsp;<a href="https://www.facebook.com/mage2ecommerce/">https://www.facebook.com/mage2ecommerce/</a></strong></p><p><strong>Follow us on Twitter:&nbsp;<a href="https://twitter.com/mage2ecommerce/">https://twitter.com/mage2ecommerce/</a></strong></p>');
         $homePage = factory(\Mage2\Ecommerce\Models\Database\Page::class)->create(['name' => 'Home Page',
                                                                                     'slug' => 'home-page',
-                                                                                    'content' = $homePageContent,
+                                                                                    'content' => $homePageContent,
                                                                                     'meta_title' => 'Home Page - Mage2 E commerce']);
         \Mage2\Ecommerce\Models\Database\Configuration::create(['configuration_key' => 'general_home_page',
                                                                 'configuration_value' => $homePage->id]);
