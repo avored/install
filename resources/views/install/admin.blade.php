@@ -15,28 +15,97 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="first_name">First Name</label>
-                        <input type="text" name="first_name" class="form-control" id="first_name"  />
+                        <input type="text" name="first_name"
+                        @if($errors->has('first_name'))
+                            class="is-invalid form-control"
+                        @else
+                               class="form-control"
+                        @endif
+                               id="first_name"  />
+
+                        @if($errors->has('first_name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('first_name') }}
+                            </div>
+                        @endif
+
                     </div>
 
                     <div class="form-group">
                         <label for="last_name">Last Name</label>
-                        <input type="text" name="last_name" class="form-control" id="last_name"  />
+                        <input type="text" name="last_name"
+
+                            @if($errors->has('last_name'))
+                                class="is-invalid form-control"
+                            @else
+                                class="form-control"
+                            @endif
+                               id="last_name"  />
+
+                        @if($errors->has('last_name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('last_name') }}
+                            </div>
+                        @endif
+
+
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" name="email" class="form-control" id="email"  />
+                        <input type="text" name="email"
+                               @if($errors->has('email'))
+                                    class="is-invalid form-control"
+                               @else
+                                    class="form-control"
+                               @endif
+                               id="email"  />
+
+                        @if($errors->has('email'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
+                            </div>
+                        @endif
+
+
                     </div>
 
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password"  />
+                        <input type="password" name="password"
+                               @if($errors->has('password'))
+                               class="is-invalid form-control"
+                               @else
+                               class="form-control"
+                               @endif
+                               id="password"  />
+
+                        @if($errors->has('password'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('password') }}
+                            </div>
+                        @endif
+
                     </div>
 
                     <div class="form-group">
                         <label for="password_confirmation">Confirm Password</label>
-                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation"  />
+                        <input type="password" name="password_confirmation"
+                               @if($errors->has('password_confirmation'))
+                               class="is-invalid form-control"
+                               @else
+                               class="form-control"
+                               @endif
+                               id="password_confirmation"  />
+
+                        @if($errors->has('password_confirmation'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('password_confirmation') }}
+                            </div>
+                        @endif
+
+
                     </div>
 
                     <input type="hidden" name="language" value="en">
