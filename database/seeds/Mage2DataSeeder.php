@@ -122,7 +122,7 @@ class Mage2DataSeeder extends Seeder
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
-        ProductImage::create(['path' => '/uploads/catalog/images/1/k/0/-Single-card-New-Pastoral-Linen-Blending-Embroidered-Living-Room-font-b-Curtain-b-font-font.jpg', 'product_id' => $product->id, 'is_main_image' => 1]);
+        ProductImage::create(['path' => '/uploads/catalog/images/1/k/0/-Single-Panel-New-Pastoral-Linen-Blending-Embroidered-Living-Room-font-b-Curtain-b-font-font.jpg', 'product_id' => $product->id, 'is_main_image' => 1]);
         $product->prices()->create(['price' => rand(2, 10) . "0." . rand(1, 9) . "0"]);
 
 
