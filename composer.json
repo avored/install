@@ -3,7 +3,7 @@
     "type": "mage2-module",
     "description": "Mage2 Laravel 5 E commerce Install Module",
     "keywords": ["framework", "install" ,"cart","laravel","e commerce","laravel5","shop","shopping-cart","e-commerce","shopping cart","e commerce"],
-    "license": "GPL-3.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Purvesh  ",
@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.0.0",
-        "symfony/yaml": "^3.3"
+        "mage2/module-installer": "dev-master"
     },
   "autoload": {
     "classmap": [
