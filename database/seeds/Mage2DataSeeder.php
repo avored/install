@@ -48,8 +48,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => ''
+            'meta_title' => '',
+            'meta_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -77,8 +77,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => ''
+            'meta_title' => '',
+            'meta_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -97,8 +97,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => ''
+            'meta_title' => '',
+            'meta_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -117,8 +117,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => ''
+            'meta_title' => '',
+            'meta_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -137,8 +137,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => '',
+            'meta_title' => '',
+            'meta_description' => '',
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -158,8 +158,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => ''
+            'meta_title' => '',
+            'meta_description' => ''
         ]);
 
         $product->categories()->sync($livingRoomCategory->id);
@@ -179,8 +179,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => ''
+            'meta_title' => '',
+            'meta_description' => ''
         ]);
 
         $product->categories()->sync($bedroomCategory->id);
@@ -199,8 +199,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => '',
+            'meta_title' => '',
+            'meta_description' => '',
             'type' => 'BASIC',
         ]);
 
@@ -220,8 +220,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => '',
+            'meta_title' => '',
+            'meta_description' => '',
             'type' => 'BASIC',
         ]);
 
@@ -240,8 +240,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => '',
+            'meta_title' => '',
+            'meta_description' => '',
             'type' => 'BASIC',
         ]);
 
@@ -260,8 +260,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => '',
+            'meta_title' => '',
+            'meta_description' => '',
             'type' => 'BASIC',
         ]);
 
@@ -281,8 +281,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => '',
+            'meta_title' => '',
+            'meta_description' => '',
             'type' => 'BASIC',
         ]);
 
@@ -302,8 +302,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => '',
+            'meta_title' => '',
+            'meta_description' => '',
             'type' => 'BASIC',
         ]);
 
@@ -322,8 +322,8 @@ class Mage2DataSeeder extends Seeder
             'track_stock' => 1,
             'qty' => rand(10, 1000),
             'is_taxable' => 1,
-            'page_title' => '',
-            'page_description' => '',
+            'meta_title' => '',
+            'meta_description' => '',
             'type' => 'BASIC',
         ]);
 
