@@ -58,6 +58,8 @@ class InstallController extends Controller
         'tokenizer',
         'gd',
         'xml',
+        'ctype',
+        'json',
         'curl'];
 
 

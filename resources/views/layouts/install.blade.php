@@ -11,8 +11,6 @@
     <title>{{ config('app.name', 'Mage2 Ecommerce') }}</title>
 
     <link href="{{ asset('vendor/mage2-admin/css/app.css') }}" rel="stylesheet">
-  
-
 
     <!-- Scripts -->
     <script>

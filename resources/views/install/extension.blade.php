@@ -17,32 +17,52 @@
                                 <span>OpenSSL PHP Extension</span>
                                     <span class="float-right">
                                         @if($result['openssl'] == true)
-                                            <i class="oi oi-check"></i>
+                                            <i class="fas fa-check"></i>
                                         @else
-                                            <i class="oi oi-ban"></i>
+                                            <i class="fas fa-ban"></i>
                                         @endif
                                     </span>
+                            </div>
+                            <div class="php-extension">
+                                <span>PDO PHP Extension</span>
+                                <span class="float-right">
+                                    @if($result['pdo'] == true)
+                                        <i class="fas fa-check"></i>
+                                    @else
+                                        <i class="fas fa-ban"></i>
+                                    @endif
+                                </span>
                             </div>
 
                             <div class="php-extension">
                                 <span>GD PHP Extension</span>
                                     <span class="float-right">
                                         @if($result['gd'] == true)
-                                            <i class="oi oi-check"></i>
+                                            <i class="fas fa-check"></i>
                                         @else
-                                            <i class="oi oi-ban"></i>
+                                            <i class="fas fa-ban"></i>
                                         @endif
                                     </span>
                             </div>
 
+                            <div class="php-extension">
+                                <span>Mbstring PHP Extension</span>
+                                <span class="float-right">
+                                    @if($result['mbstring'] == true)
+                                        <i class="fas fa-check"></i>
+                                    @else
+                                        <i class="fas fa-ban"></i>
+                                    @endif
+                                </span>
+                            </div>
 
                             <div class="php-extension">
-                                <span>Curl PHP Extension</span>
+                                <span>Tokenizer PHP Extension</span>
                                 <span class="float-right">
-                                    @if($result['curl'] == true)
-                                        <i class="oi oi-check"></i>
+                                    @if($result['tokenizer'] == true)
+                                        <i class="fas fa-check"></i>
                                     @else
-                                        <i class="oi oi-ban"></i>
+                                        <i class="fas fa-ban"></i>
                                     @endif
                                 </span>
                             </div>
@@ -51,43 +71,53 @@
                                 <span>XML PHP Extension</span>
                                 <span class="float-right">
                                     @if($result['xml'] == true)
-                                        <i class="oi oi-check"></i>
+                                        <i class="fas fa-check"></i>
                                     @else
-                                        <i class="oi oi-ban"></i>
+                                        <i class="fas fa-ban"></i>
                                     @endif
                                 </span>
                             </div>
 
                             <div class="php-extension">
-                                <span>PDO PHP Extension</span>
+                                <span>JSON PHP Extension</span>
                                 <span class="float-right">
-                                    @if($result['pdo'] == true)
-                                        <i class="oi oi-check"></i>
+                                    @if($result['json'] == true)
+                                        <i class="fas fa-check"></i>
                                     @else
-                                        <i class="oi oi-ban"></i>
+                                        <i class="fas fa-ban"></i>
                                     @endif
                                 </span>
                             </div>
+
                             <div class="php-extension">
-                                <span>Mbstring PHP Extension</span>
+                                <span>Curl PHP Extension</span>
                                 <span class="float-right">
-                                    @if($result['mbstring'] == true)
-                                        <i class="oi oi-check"></i>
+                                    @if($result['curl'] == true)
+                                        <i class="fas fa-check"></i>
                                     @else
-                                        <i class="oi oi-ban"></i>
+                                        <i class="fas fa-ban"></i>
                                     @endif
                                 </span>
                             </div>
+
+
+
+
+
+
+
                             <div class="php-extension">
-                                <span>Tokenizer PHP Extension</span>
+                                <span>Ctype PHP Extension</span>
                                 <span class="float-right">
-                                    @if($result['tokenizer'] == true)
-                                        <i class="oi oi-check"></i>
+                                        @if($result['ctype'] == true)
+                                        <i class="fas fa-check"></i>
                                     @else
-                                        <i class="oi oi-ban"></i>
+                                        <i class="fas fa-ban"></i>
                                     @endif
-                                </span>
+                                    </span>
                             </div>
+
+
                         </div>
 
                         <div class="form-group">
