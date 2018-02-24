@@ -14,8 +14,23 @@
 
                 <p>Click Continue to install Database</p>
 
+                    <div class="form-group">
+                        <label for="selected_db_option">
+                            Please Select one Option
+                        </label>
+                        <select id="selected_db_option" required name="selected_db_option" class="form-control">
+                            <option >Please Select</option>
+                            <option value="1">Install Database</option>
+                            <option value="2">Skip and Download Tables Only</option>
+                            <option value="3">Skip and Download Tables & Seed Sample Data too</option>
+                        </select>
+
+                    </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-primary install-new-button">Install Database</button>
+                    <button type="button" class="btn btn-primary install-new-button">Save</button>
+
+                    <a href="{{ route('mage2.install.database.data.get') }}" class="skip-sample-data-button btn btn-warning ml-2 d-none">Skip</a>
+                    <a href="{{ route('mage2.install.admin') }}" class="skip-sample-admin-user btn btn-warning ml-2 d-none">Skip</a>
                 </div>
 
                 </form>
@@ -31,6 +46,16 @@
             jQuery('.install-new-button').click(function (e) {
 
                 //#install-module-form
+
+                val = jQuery('#selected_db_option').val();
+                if(val == 2)  {
+                    jQuery('.skip-sample-data-button').removeClass('d-none');
+                }
+
+                if(val ==3) {
+                    jQuery('.skip-sample-admin-user').removeClass('d-none');
+                }
+
                 jQuery(this).button('loading');
                 jQuery('#install-module-form').submit();
             });

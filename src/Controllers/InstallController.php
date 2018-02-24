@@ -97,14 +97,38 @@ class InstallController extends Controller
 
     public function databaseTablePost(Request $request)
     {
-        try {
-            Artisan::call('migrate:fresh');
-        } catch (Exception $e) {
 
+        $downloadFile  = false;
+
+
+        try {
+
+            if(1 == $request->get('selected_db_option')) {
+                //dd('here');
+                Artisan::call('migrate:fresh');
+            }
+            if(2 == $request->get('selected_db_option')) {
+                $downloadFile = true;
+                $pathToFile = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR .  "sql" . DIRECTORY_SEPARATOR . "mage2-ecommerce-table.sql";
+            }
+            if(3 == $request->get('selected_db_option')) {
+                $downloadFile = true;
+
+                $pathToFile = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR .  "sql" . DIRECTORY_SEPARATOR . "mage2-ecommerce-sample-data.sql";
+            }
+
+        } catch (Exception $e) {
             throw new Exception($e->getMessage());
         }
 
-        return redirect()->route('mage2.install.database.data.get');
+
+
+        if(true === $downloadFile) {
+            return response()->download($pathToFile);
+        } else {
+            return redirect()->route('mage2.install.database.data.get');
+        }
+
     }
 
     public function databaseDataGet()
