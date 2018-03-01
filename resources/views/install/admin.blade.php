@@ -9,7 +9,7 @@
             <div class="card-body">
 
 
-                <h4 class="text-center">Create Admin Account</h4>
+                <h4 class="text-center md-3">Create Admin Account</h4>
 
                 <form action="{{ route('mage2.install.admin.post') }}" method="post" id="create-admin-user-form">
                     {{ csrf_field() }}
