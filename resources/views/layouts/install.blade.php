@@ -8,9 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Mage2 Ecommerce') }}</title>
+    <title>{{ config('app.name', 'AvoRed Ecommerce') }}</title>
 
-    <link href="{{ asset('vendor/mage2-admin/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/avored-admin/css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -21,7 +21,7 @@
     </script>
 
 
-    <script src="{{ asset('/vendor/mage2-admin/js/app.js') }}"></script>
+    <script src="{{ asset('/vendor/avored-admin/js/app.js') }}"></script>
   
 
     <style>

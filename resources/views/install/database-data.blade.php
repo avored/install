@@ -1,18 +1,18 @@
-@extends('mage2-install::layouts.install')
+@extends('avored-install::layouts.install')
 
 @section('content')
     <div class="col-md-6">
         <div class="card card-default">
-            <div class="card-header">Welcome to Mage2 Installation</div>
+            <div class="card-header">Welcome to AvoRed Installation</div>
             <div class="card-body">
 
 
                 <h2 class="text-center">Database Data Setup</h2>
 
-                <form method="post" action="{{ route('mage2.install.database.data.post') }}">
+                <form method="post" action="{{ route('avored.install.database.data.post') }}">
                     {{ csrf_field() }}
 
-                    <input type="hidden" name="identifier" value="mage2-install" />
+                    <input type="hidden" name="identifier" value="avored-install" />
 
                     <div class="form-group">
                         <label for="install_data">Install Dummy Data</label>

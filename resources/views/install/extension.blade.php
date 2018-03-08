@@ -1,4 +1,4 @@
-@extends('mage2-install::layouts.install')
+@extends('avored-install::layouts.install')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-6">
                 <div class="card card-default">
                     <div class="card-header">
-                        Welcome to Mage2 Ecommerce Installation
+                        Welcome to AvoRed Ecommerce Installation
                     </div>
                     <div class="card-body">
 
@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button data-url="{{ route('mage2.install.database.table.get') }}"
+                            <button data-url="{{ route('avored.install.database.table.get') }}"
                                     class="btn btn-primary continue-button">Continue
                             </button>
                         </div>

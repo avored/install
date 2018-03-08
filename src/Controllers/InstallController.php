@@ -1,38 +1,24 @@
 <?php
 /**
- * Mage2
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the GNU General Public License v3.0
- * that is bundled with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * https://www.gnu.org/licenses/gpl-3.0.en.html
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to ind.purvesh@gmail.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Mage2 to newer
- * versions in the future. If you wish to customize Mage2 for your
- * needs please refer to http://mage2.website for more information.
+ * AvoRed E commerce built for Laravel Shopping Cart Solution
  *
  * @author    Purvesh <ind.purvesh@gmail.com>
- * @copyright 2016-2017 Mage2
- * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License v3.0
+ * @copyright 2017-2018 AvoRed
+ * @license   https://opensource.org/licenses/MIT MIT
+ * @link      https://www.avored.com
  */
-namespace Mage2\Install\Controllers;
+
+namespace AvoRed\Install\Controllers;
 
 use Exception;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
-use Mage2\Ecommerce\Theme\Facade as Theme;
-use Mage2\Ecommerce\Models\Database\AdminUser;
+use AvoRed\Ecommerce\Theme\Facade as Theme;
+use AvoRed\Ecommerce\Models\Database\AdminUser;
 use Illuminate\Routing\Controller;
-use Mage2\Install\Requests\AdminUserRequest;
-use Mage2\Ecommerce\Models\Database\Role;
-use Mage2\Ecommerce\Models\Database\Configuration;
+use AvoRed\Install\Requests\AdminUserRequest;
+use AvoRed\Ecommerce\Models\Database\Role;
+use AvoRed\Ecommerce\Models\Database\Configuration;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Passport\ClientRepository;
@@ -69,7 +55,7 @@ class InstallController extends Controller
     }
 
     /**
-     * Display all needed PHP Extension for the Mage2 E commerce App
+     * Display all needed PHP Extension for the AvoRed E commerce App
      *
      *
      * @return \Illuminate\Http\Response
@@ -87,12 +73,12 @@ class InstallController extends Controller
             }
         }
 
-        return view('mage2-install::install.extension')->with('result', $result);
+        return view('avored-install::install.extension')->with('result', $result);
     }
 
     public function databaseTableGet()
     {
-        return view('mage2-install::install.database-table');
+        return view('avored-install::install.database-table');
     }
 
     public function databaseTablePost(Request $request)
@@ -109,12 +95,12 @@ class InstallController extends Controller
             }
             if(2 == $request->get('selected_db_option')) {
                 $downloadFile = true;
-                $pathToFile = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR .  "sql" . DIRECTORY_SEPARATOR . "mage2-ecommerce-table.sql";
+                $pathToFile = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR .  "sql" . DIRECTORY_SEPARATOR . "avored-ecommerce-table.sql";
             }
             if(3 == $request->get('selected_db_option')) {
                 $downloadFile = true;
 
-                $pathToFile = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR .  "sql" . DIRECTORY_SEPARATOR . "mage2-ecommerce-sample-data.sql";
+                $pathToFile = __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR .  "sql" . DIRECTORY_SEPARATOR . "avored-ecommerce-sample-data.sql";
             }
 
         } catch (Exception $e) {
@@ -126,14 +112,14 @@ class InstallController extends Controller
         if(true === $downloadFile) {
             return response()->download($pathToFile);
         } else {
-            return redirect()->route('mage2.install.database.data.get');
+            return redirect()->route('avored.install.database.data.get');
         }
 
     }
 
     public function databaseDataGet()
     {
-        return view('mage2-install::install.database-data');
+        return view('avored-install::install.database-data');
     }
 
     public function databaseDataPost(Request $request)
@@ -145,7 +131,7 @@ class InstallController extends Controller
 
             try {
 
-                Artisan::call('db:seed', ['--class' => 'Mage2DataSeeder']);
+                Artisan::call('db:seed', ['--class' => 'AvoRedDataSeeder']);
                 Theme::publishItem($fromPath, $toPath);
 
             } catch (Exception $e) {
@@ -154,18 +140,18 @@ class InstallController extends Controller
 
         }
 
-        return redirect()->route('mage2.install.admin');
+        return redirect()->route('avored.install.admin');
     }
 
     public function admin()
     {
-        return view('mage2-install::install.admin');
+        return view('avored-install::install.admin');
     }
 
     public function adminPost(AdminUserRequest $request)
     {
 
-        $theme = Theme::get('mage2-default');
+        $theme = Theme::get('avored-default');
         $fromPath = $theme['asset_path'];
         $toPath = public_path('vendor/' . $theme['name']);
 
@@ -192,22 +178,22 @@ class InstallController extends Controller
 
             Configuration::create([
                 'configuration_key' => 'active_theme_identifier',
-                'configuration_value' => 'mage2-default'
+                'configuration_value' => 'avored-default'
             ]);
             Configuration::create([
                 'configuration_key' => 'active_theme_path',
-                'configuration_value' => base_path('themes\mage2\default')
+                'configuration_value' => base_path('themes\avored\default')
             ]);
             Configuration::create([
-                'configuration_key' => 'mage2_catalog_no_of_product_category_page',
+                'configuration_key' => 'avored_catalog_no_of_product_category_page',
                 'configuration_value' => 9
             ]);
             Configuration::create(
-                ['configuration_key' => 'mage2_catalog_cart_page_display_taxamount',
+                ['configuration_key' => 'avored_catalog_cart_page_display_taxamount',
                     'configuration_value' => 'yes'
                 ]);
             Configuration::create([
-                'configuration_key' => 'mage2_tax_class_percentage_of_tax',
+                'configuration_key' => 'avored_tax_class_percentage_of_tax',
                 'configuration_value' => 15
             ]);
 
@@ -217,13 +203,13 @@ class InstallController extends Controller
         }
 
 
-        return redirect()->route('mage2.install.success');
+        return redirect()->route('avored.install.success');
     }
 
     public function success()
     {
         Storage::disk('local')->put('installed.txt', '.installed');
-        return view('mage2-install::install.success');
+        return view('avored-install::install.success');
     }
 
 }

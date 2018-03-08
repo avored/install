@@ -1,14 +1,14 @@
-@extends('mage2-install::layouts.install')
+@extends('avored-install::layouts.install')
 @section('content')
 
     <div class="col-md-6">
         <div class="card card-default">
-            <div class="card-header">Welcome to Mage2 Installation</div>
+            <div class="card-header">Welcome to AvoRed Installation</div>
             <div class="card-body">
 
                 <h2 class="text-center">Database Table Setup</h2>
 
-                <form id="install-module-form" method="post" action="{{ route('mage2.install.database.table.post') }}">
+                <form id="install-module-form" method="post" action="{{ route('avored.install.database.table.post') }}">
 
                     {{ csrf_field() }}
 
@@ -29,8 +29,8 @@
                 <div class="form-group">
                     <button type="button" class="btn btn-primary install-new-button">Save</button>
 
-                    <a href="{{ route('mage2.install.database.data.get') }}" class="skip-sample-data-button btn btn-warning ml-2 d-none">Skip</a>
-                    <a href="{{ route('mage2.install.admin') }}" class="skip-sample-admin-user btn btn-warning ml-2 d-none">Skip</a>
+                    <a href="{{ route('avored.install.database.data.get') }}" class="skip-sample-data-button btn btn-warning ml-2 d-none">Skip</a>
+                    <a href="{{ route('avored.install.admin') }}" class="skip-sample-admin-user btn btn-warning ml-2 d-none">Skip</a>
                 </div>
 
                 </form>

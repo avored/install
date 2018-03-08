@@ -1,17 +1,16 @@
-@extends('mage2-install::layouts.install')
+@extends('avored-install::layouts.install')
 
 @section('content')
 
-
     <div class="col-md-6">
         <div class="card card-default">
-            <div class="card-header"><h1>Welcome to Mage2 Ecommerce Installation</h1></div>
+            <div class="card-header"><h1>Welcome to AvoRed Ecommerce Installation</h1></div>
             <div class="card-body">
 
 
                 <h4 class="text-center md-3">Create Admin Account</h4>
 
-                <form action="{{ route('mage2.install.admin.post') }}" method="post" id="create-admin-user-form">
+                <form action="{{ route('avored.install.admin.post') }}" method="post" id="create-admin-user-form">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="first_name">First Name</label>
