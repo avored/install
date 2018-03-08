@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.0.0",
-        "mage2/module-installer": "dev-master"
+        "avored/module-installer": "dev-master"
     },
   "autoload": {
     "classmap": [
