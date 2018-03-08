@@ -1,5 +1,5 @@
 {
-    "name": "mage2/install",
+    "name": "avored/install",
     "type": "mage2-module",
     "description": "Mage2 Laravel 5 E commerce Install Module",
     "keywords": ["framework", "install" ,"cart","laravel","e commerce","laravel5","shop","shopping-cart","e-commerce","shopping cart","e commerce"],
