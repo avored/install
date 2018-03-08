@@ -153,7 +153,7 @@ class InstallController extends Controller
 
         $theme = Theme::get('avored-default');
         $fromPath = $theme['asset_path'];
-        $toPath = public_path('vendor/' . $theme['name']);
+        $toPath = public_path('vendor/' . $theme['identifier']);
 
         Theme::publishItem($fromPath, $toPath);
 
