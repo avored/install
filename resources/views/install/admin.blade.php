@@ -2,9 +2,10 @@
 
 @section('content')
 
-    <div class="col-md-6">
+    <div class="container">
+        <div class="col-8">
         <div class="card card-default">
-            <div class="card-header"><h1>Welcome to AvoRed Ecommerce Installation</h1></div>
+            <div class="card-header"><h6>Welcome to AvoRed Ecommerce Installation</h6></div>
             <div class="card-body">
 
 
@@ -116,6 +117,7 @@
 
             </div>
         </div>
+    </div>
     </div>
 
     @push('styles')

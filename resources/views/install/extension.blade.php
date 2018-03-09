@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="">
                 <div class="card card-default">
                     <div class="card-header">
                         Welcome to AvoRed Ecommerce Installation
@@ -15,7 +15,7 @@
                         <div class="extension-list">
                             <div class="php-extension">
                                 <span>OpenSSL PHP Extension</span>
-                                    <span class="float-right">
+                                    <span class="float-right text-success mr-1">
                                         @if($result['openssl'] == true)
                                             <i class="fas fa-check"></i>
                                         @else
@@ -25,7 +25,7 @@
                             </div>
                             <div class="php-extension">
                                 <span>PDO PHP Extension</span>
-                                <span class="float-right">
+                                <span class="float-right text-success mr-1">
                                     @if($result['pdo'] == true)
                                         <i class="fas fa-check"></i>
                                     @else
@@ -36,7 +36,7 @@
 
                             <div class="php-extension">
                                 <span>GD PHP Extension</span>
-                                    <span class="float-right">
+                                    <span class="float-right text-success mr-1">
                                         @if($result['gd'] == true)
                                             <i class="fas fa-check"></i>
                                         @else
@@ -49,7 +49,7 @@
                                 <span>Mbstring PHP Extension</span>
                                 <span class="float-right">
                                     @if($result['mbstring'] == true)
-                                        <i class="fas fa-check"></i>
+                                        <i class="fas fa-check text-success mr-1"></i>
                                     @else
                                         <i class="fas fa-ban"></i>
                                     @endif
@@ -58,7 +58,7 @@
 
                             <div class="php-extension">
                                 <span>Tokenizer PHP Extension</span>
-                                <span class="float-right">
+                                <span class="float-right text-success mr-1">
                                     @if($result['tokenizer'] == true)
                                         <i class="fas fa-check"></i>
                                     @else
@@ -69,7 +69,7 @@
 
                             <div class="php-extension">
                                 <span>XML PHP Extension</span>
-                                <span class="float-right">
+                                <span class="float-right  text-success mr-1">
                                     @if($result['xml'] == true)
                                         <i class="fas fa-check"></i>
                                     @else
@@ -80,7 +80,7 @@
 
                             <div class="php-extension">
                                 <span>JSON PHP Extension</span>
-                                <span class="float-right">
+                                <span class="float-right text-success mr-1">
                                     @if($result['json'] == true)
                                         <i class="fas fa-check"></i>
                                     @else
@@ -91,7 +91,7 @@
 
                             <div class="php-extension">
                                 <span>Curl PHP Extension</span>
-                                <span class="float-right">
+                                <span class="float-right text-success mr-1">
                                     @if($result['curl'] == true)
                                         <i class="fas fa-check"></i>
                                     @else
@@ -102,13 +102,9 @@
 
 
 
-
-
-
-
                             <div class="php-extension">
                                 <span>Ctype PHP Extension</span>
-                                <span class="float-right">
+                                <span class="float-right text-success mr-1 ">
                                         @if($result['ctype'] == true)
                                         <i class="fas fa-check"></i>
                                     @else
@@ -116,7 +112,6 @@
                                     @endif
                                     </span>
                             </div>
-
 
                         </div>
 
@@ -151,8 +146,7 @@
     <style>
         .extension-list div {
             border: 1px solid #ccc;
-            padding: 10px;
-
+            padding: 5px;
             margin-bottom: 10px;
         }
     </style>

@@ -1,7 +1,7 @@
 @extends('avored-install::layouts.install')
 
 @section('content')
-    <div class="col-md-6">
+    <div class="container">
         <div class="card card-default">
             <div class="card-header">Welcome to AvoRed Installation</div>
             <div class="card-body">

@@ -22,15 +22,11 @@
 
 
     <script src="{{ asset('/vendor/avored-admin/js/app.js') }}"></script>
-  
+
 
     <style>
-        body {
-            width: 100%;
-            height: 100%;
-        }
 
-        .container-fluid {
+        .container {
 
             display: -ms-flexbox;
             display: -webkit-flex;
@@ -43,23 +39,22 @@
             align-items: center;
         }
 
-        .installation-card {
-            width: 60%;
-            text-align: center;
+        body {
+            background-color: #F44336;
         }
+
 
     </style>
     <script>
         jQuery(document).ready(function () {
-            jQuery('.container-fluid').height(jQuery(document).height())
+            jQuery('.container').height(jQuery(document).height())
         })
     </script>
 </head>
 <body>
 
-<div class="container-fluid" style="height: 100%">
     @yield('content')
-</div>
+
 
 @stack('scripts')
 @stack('styles')
