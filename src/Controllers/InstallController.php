@@ -22,6 +22,7 @@ use AvoRed\Ecommerce\Models\Database\Configuration;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Passport\ClientRepository;
+use Illuminate\Support\Facades\App;
 
 class InstallController extends Controller
 {
@@ -75,6 +76,40 @@ class InstallController extends Controller
 
         return view('avored-install::install.extension')->with('result', $result);
     }
+
+    public function databaseEnvGet()
+    {
+        return view('avored-install::install.database-env');
+    }
+
+
+    public function databaseEnvPost(Request $request)
+    {
+
+
+        $envReplacekeys = ['db_database','db_username','db_password'];
+        $envFilePath = App::environmentFilePath();
+
+
+        foreach ($envReplacekeys as $formKey) {
+
+            $envKey = strtoupper($formKey);
+
+            $envCurrentValue = env($envKey);
+
+            $dbFormValue = $request->get($formKey);
+            file_put_contents(
+                $envFilePath,
+                preg_replace("/^{$envKey}={$envCurrentValue}/m",
+                "{$envKey}=".$dbFormValue,
+                file_get_contents($envFilePath))
+            );
+
+        }
+
+        return view('avored-install::install.database-table');
+    }
+
 
     public function databaseTableGet()
     {

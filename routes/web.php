@@ -15,21 +15,40 @@
   |--------------------------------------------------------------------------
   |
   | Here is where you can register all of the routes for an avored install modules.
-  | It's a breeze. Simply tell avored install module the URI it should respond to
+  | Simply tell avored install module the URI it should respond to
   | and give it the controller to call when that URI is requested.
   |
  */
-Route::group(['middleware' => 'web', 'namespace' => "AvoRed\Install\Controllers"], function () {
-    Route::get('/install', ['as' => 'avored.install', 'uses' => 'InstallController@index']);
 
-    Route::get('/install/database/table', ['as' => 'avored.install.database.table.get', 'uses' => 'InstallController@databaseTableGet']);
-    Route::post('/install/database/table', ['as' => 'avored.install.database.table.post', 'uses' => 'InstallController@databaseTablePost']);
+Route::middleware('web')
+        ->namespace('AvoRed\Install\Controllers')
+        ->prefix('install')
+        ->group(function (){
 
-    Route::get('/install/database/data', ['as' => 'avored.install.database.data.get', 'uses' => 'InstallController@databaseDataGet']);
-    Route::post('/install/database/data', ['as' => 'avored.install.database.data.post', 'uses' => 'InstallController@databaseDataPost']);
+            Route::get('','InstallController@index')->name('install.index');
 
-    Route::get('/install/admin', ['as' => 'avored.install.admin', 'uses' => 'InstallController@admin']);
-    Route::post('/install/admin', ['as' => 'avored.install.admin.post', 'uses' => 'InstallController@adminPost']);
+            Route::get('db','InstallController@databaseEnvGet')
+                        ->name('avored.db');
+            Route::post('db','InstallController@databaseEnvPost')
+                        ->name('avored.db.post');
 
-    Route::get('/install/success', ['as' => 'avored.install.success', 'uses' => 'InstallController@success']);
-});
+            Route::get('db/table','InstallController@databaseTableGet')
+                        ->name('avored.install.database.table.get');
+            Route::post('db/table','InstallController@databaseTablePost')
+                        ->name('avored.install.database.table.post');
+
+            Route::get('db/data','InstallController@databaseDataGet')
+                ->name('avored.install.database.data.get');
+            Route::post('db/data','InstallController@databaseDataPost')
+                ->name('avored.install.database.data.post');
+
+            Route::get('admin','InstallController@admin')
+                ->name('avored.install.admin');
+            Route::post('admin','InstallController@adminPost')
+                ->name('avored.install.admin.post');
+
+            Route::get('success','InstallController@success')
+                ->name('avored.install.success');
+
+
+        });
