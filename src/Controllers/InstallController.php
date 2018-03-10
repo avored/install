@@ -13,7 +13,7 @@ namespace AvoRed\Install\Controllers;
 use Exception;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
-use AvoRed\Ecommerce\Theme\Facade as Theme;
+use AvoRed\Framework\Theme\Facade as Theme;
 use AvoRed\Ecommerce\Models\Database\AdminUser;
 use Illuminate\Routing\Controller;
 use AvoRed\Install\Requests\AdminUserRequest;
