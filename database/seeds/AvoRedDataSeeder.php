@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use AvoRed\Ecommerce\Models\Database\Category;
-use AvoRed\Ecommerce\Models\Database\Product;
+use AvoRed\Framework\Models\Database\Category;
+use AvoRed\Framework\Models\Database\Product;
 use Faker\Factory;
-use AvoRed\Ecommerce\Models\Database\ProductImage;
+use AvoRed\Framework\Models\Database\ProductImage;
 use AvoRed\Ecommerce\Models\Database\Country;
 use AvoRed\Ecommerce\Models\Database\Page;
 
