@@ -319,6 +319,40 @@ class AvoRedDataSeeder extends Seeder
             'type' => 'BASIC',
         ]);
 
+        \AvoRed\Ecommerce\Models\Database\Menu::create([
+            'name' => $kitchenCategory->name,
+            'params' => $kitchenCategory->slug,
+            'route' => 'category.view',
+
+        ]);
+        \AvoRed\Ecommerce\Models\Database\Menu::create([
+            'name' => $bedroomCategory->name,
+            'params' => $bedroomCategory->slug,
+            'route' => 'category.view',
+
+        ]);
+        \AvoRed\Ecommerce\Models\Database\Menu::create([
+            'name' => $livingRoomCategory->name,
+            'params' => $livingRoomCategory->slug,
+            'route' => 'category.view',
+
+        ]);
+        \AvoRed\Ecommerce\Models\Database\Menu::create([
+            'name' => 'My Account',
+            'route' => 'my-account.home',
+
+        ]);
+        \AvoRed\Ecommerce\Models\Database\Menu::create([
+            'name' => 'Cart',
+            'route' => 'cart.view',
+
+        ]);
+        \AvoRed\Ecommerce\Models\Database\Menu::create([
+            'name' => 'Checkout',
+            'route' => 'checkout.index',
+
+        ]);
+
         $product->categories()->sync($kitchenCategory->id);
         ProductImage::create(['path' => '/uploads/catalog/images/0/y/4/tsf02crsa.jpg', 'product_id' => $product->id, 'is_main_image' => 1]);
 
